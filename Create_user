@@ -1,0 +1,27 @@
+#!/bin/bash							# beginning of a script is called a shebang (or hashbang).
+echo "Enter the user to be created"				
+read a								# a represent the input for the above statement
+gp=$(grep $a /etc/passwd|wc -l)					# checks if the entered user is present or not
+if [[ $gp -gt 0 ]]				
+then
+echo "User is already present"
+u=$(cat /etc/passwd|grep $a)					# used to display the user which is already present
+echo "$u"
+else
+echo "User is  not found"
+
+echo "Do you want to create the above user(YES/NO)?"
+read b
+if [[ $b == YES ]]
+then
+useradd $a
+echo "User $a has been created"
+u=$(cat /etc/passwd|grep $a)
+echo "$u"
+else
+echo "Okay, bye!"
+fi
+
+
+
+		##**This file is modified and committed using cli itslef**
