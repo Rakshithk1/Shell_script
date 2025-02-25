@@ -1,0 +1,22 @@
+#!/bin/bash
+echo "enter a string"
+read st
+count=${#st}
+echo " total numbers are $count "
+
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+
