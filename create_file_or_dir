@@ -1,0 +1,24 @@
+#!/bin/bash
+echo "enter 1 to create directory name"
+echo "enter 2 to create the file"
+read a
+if [[ $a -eq 1 ]]
+then
+echo "enter the directory name"
+read b
+mkdir /shell_scripts_rakshith./$b
+if [[ $? -eq 0 ]]
+then
+echo "Directory is created"
+fi
+elif [[ $a -eq 2 ]]
+then
+echo "enter the file name"
+read f
+touch /shell_scripts_rakshith./$f
+if [[ $? -eq 0 ]]
+then
+echo "file is created"
+fi
+fi
+
