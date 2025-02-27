@@ -1,0 +1,8 @@
+#!/bin/bash
+threshold=60
+disk_usage=$(df / | awk 'NR==2 {print $5}' | sed 's/%//')			##Here awk is used to check the 2nd row and sed used to remove the %
+if [[ $disk_usage -ge $threshold ]]; then
+echo "Threshold reached: $disk_usage% used."
+elise
+echo "Disk usage is under control: $disk_usage% used."
+fi

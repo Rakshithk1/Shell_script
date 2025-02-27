@@ -1,0 +1,7 @@
+#!/bin/bash
+echo "enter the file path"
+read f
+fi=$( find $f -type f -size +10M  )
+echo "here is the list"
+echo "$fi"
+
