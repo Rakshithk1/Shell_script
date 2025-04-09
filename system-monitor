@@ -1,0 +1,29 @@
+#/bin/bash
+echo " scanning the system services "
+echo " checking the Disk usage "
+disk=$( df -h | awk 'NR==2 {print $5}' | sed 's/%//' )                             ## df -h is used to check the disk usage in hunan readable. awk is used to get the root data. sed to remove %
+if [[ $disk -ge 86 ]]
+then
+echo " threshold has been crossed disk usage is $disk "
+else
+echo "  threshold is normal $disk "
+fi
+echo " =============================================================="
+echo " checking the CPU usage "
+cpu1=$( ps aux --sort=-cpu | head -n 5 | awk 'NR==2 {print $3}' | cut -d. -f1 )    ## ps aux to get the running process . sorting in decending. cut is used since the output was 0.0 and the cmd work for decimals
+if [[ $cpu1 -ge 5 ]]
+then
+echo " CPU threshold has been crossed $cpu1 "
+else
+echo " CPU is normal $cpu "
+fi
+echo "================================================================"
+echo " Checking the memory usage "
+mem=$( free -m | awk 'NR==3 {print $3}' )
+if [[ $mem -ge 300 ]]
+then
+echo " Threshold has been crossed $mem "
+else
+echo " threshold mem is normal $mem "
+fi
+
